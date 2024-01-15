@@ -8,5 +8,7 @@ Do uruchomienia projektu lokalnie należy sklonować repozytorium poleceniem `gi
 
 Jeżeli przed uruchomieniem projektu potrzeba wykonać dodatkowe czynności, np. związane z doinstalowaniem jakiejś biblioteki, należy je zawrzeć w `dockerfile` lub `docker-compose.yml`.
 
-komenda do migracji:
+Po zbudowaniu i uruchomieniu projektu za pomocą docker compose up trzeba stworzyć wszystkie tabele w bazie danych przy użyciu skryptu do migracji:
+```
 sudo docker exec -it <apache-container-name> php scripts/Database/migrations.php
+```
