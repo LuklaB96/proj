@@ -10,6 +10,7 @@ use App\Lib\Security\HTML\HiddenFieldGenerator;
 use App\Lib\View\View;
 use App\Main\App;
 use App\Lib\Config;
+
 error_log('hey');
 //force HTTPS
 requireSSL();
@@ -121,5 +122,37 @@ function requireSSL()
         exit();
     }
 }
+function checkDatabase()
+{
+    $db = Database::getInstance();
+    if ($db->isConnected()) {
+        $dbname = Config::get('DB_NAME', 'app_db');
+        try {
+            $db->execute("SELECT 1 FROM `$dbname`.`user`");
+            return true;
+        } catch (\Exception $e) {
+            if ($e->getCode() == "42S02") {
+                return false;
+            }
+            echo 'DATABASE ERROR';
+            exit();
+        }
+    }
+}
+$dbok = checkDatabase();
+if ($dbok) {
     App::run();
+} else {
+    $db = Database::getInstance();
+    if ($db->isConnected()) {
+        echo 'Creating migrations..</br>';
+        include __DIR__ . '/../scripts/Database/database_create.php';
+        include __DIR__ . '/../scripts/Database/migrations.php';
+        echo '<a href="/">Refresh Page</a>';
+    } else {
+        echo 'Application not connected to database!';
+        return;
+    }
+    session_destroy();
+}
 ?>
