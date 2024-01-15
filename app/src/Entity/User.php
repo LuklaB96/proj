@@ -29,7 +29,7 @@ class User extends Entity
     #[Column(type: ColumnType::VARCHAR, length: 100, nullable: false, unique: true)]
     protected string $email;
     #[Column(type: ColumnType::TINYINT, length: 1, nullable: true)]
-    protected bool $activated;
+    protected int $activated;
     public function getId()
     {
         return $this->id;

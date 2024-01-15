@@ -7,3 +7,6 @@ Studenci bardziej oswojeni z pracą z dockerem mogą dowolnie modyfikować `dock
 Do uruchomienia projektu lokalnie należy sklonować repozytorium poleceniem `git clone` a następnie wywołać `docker-compose up`. Projekt uznaje się za poprawnie działający, gdy w wyniku tych poleceń strona działa. W ten sposób też będzie uruchamiany projekt w celu ocenienia go, dlatego należy się upewnić, że wszystko uruchamia się poprawnie w kontenerze.
 
 Jeżeli przed uruchomieniem projektu potrzeba wykonać dodatkowe czynności, np. związane z doinstalowaniem jakiejś biblioteki, należy je zawrzeć w `dockerfile` lub `docker-compose.yml`.
+
+komenda do migracji:
+sudo docker exec -it <apache-container-name> php scripts/Database/migrations.php

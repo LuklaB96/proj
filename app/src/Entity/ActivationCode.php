@@ -27,7 +27,7 @@ class ActivationCode extends Entity
     #[Column(type: ColumnType::TEXT, nullable: true)]
     protected string $activation_code;
     #[Column(type: ColumnType::TINYINT, length: 1, nullable: true)]
-    protected bool $used;
+    protected int $used;
     #[Relation(targetEntity: User::class, relationType: RelationType::MANY_TO_ONE)]
     protected User $user;
     protected int $user_id;
