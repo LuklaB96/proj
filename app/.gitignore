@@ -1,0 +1,34 @@
+composer.phar
+/.backups/
+/vendor/
+/logs/
+
+# Ignore all custom scripts, keep database scripts
+/scripts/*
+!/scripts/Database
+
+# Ignore all Controller files, keep examples
+
+# Ignore all Entity files, keep examples
+
+# Ignore all Main files, keep examples
+/src/Main/*
+!/src/Main/App.php
+
+# Ignore all View files, keep examples
+
+# Ignore .env files, keep template
+.env
+.env.*
+!.env.template
+
+# Ignore php.ini
+php.ini
+
+# Ignore other files that can be generated
+crash.txt
+
+
+# Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
+# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
+# composer.lock

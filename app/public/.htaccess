@@ -1,0 +1,10 @@
+# Redirect all requests to example.com/index.php
+# Files can be accessed in /public directory
+# /public subdirectiorires can not be accessed.
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ index.php [QSA,L]
+
+# Default behaviour for php apache
+php_flag output_buffering on
